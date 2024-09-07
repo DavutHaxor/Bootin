@@ -20,4 +20,17 @@ Script wants these in order to complete packaging the module:
 
 After your module is created you can flash it from Magisk Manager app. Needs at least Magisk v20.4.
 
+## About GIF files
+
+Gif files usually have limited frames in a higher framerate. So you may need to do a simple calculation before specifying repeat count of animation during 5th step.
+
+For example:
+
+- We have a GIF file that have 10 frames inside it. (You can learn frame count by extracting frames with `ffmpeg -i file.gif frames_%03d.jpg`)
+- Let's say that framerate of this GIF file is 50. (Learn it by `ffprobe -v 0 -of csv=p=0 -select_streams v:0 -show_entries stream=r_frame_rate "$video" | bc`) 
+- It means that these 10 frames is being looped 5 times per second, with a delay of 20 milliseconds.
+- Repeat time you specified in 5th step is this loop count. So if you want to play the animation from GIF file for 10 seconds, you have to set repeat time to 50.
+- The script initializes the FPS automatically for Android to read. So you only have to specify the repeat count as; Repeat Count = (FPS / Frame Count) * (Seconds)
+- This problem doesnt exist in video files since they have so many frames more than an average GIF file. So only couple of repeats is enough.
+
 
