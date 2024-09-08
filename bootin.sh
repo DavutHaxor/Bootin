@@ -11,7 +11,30 @@ echo "########################" >> log.txt
 
 # ask user for media file 
 read -p "Enter media file name: " video
+read -p "Do you want to include audio in your animation (y/n): " includeAudio
 
+if [ "$includeAudio" = "y" ]; then
+  printf "Select audio source: \n"
+  printf "1. Select automatically from media file \n"
+  printf "2. Write name of your audio file \n"
+  read -p "" audioSource
+fi
+
+if [ "$audioSource" = "1" ]; then
+  ffmpeg -i $video -vn -acodec copy .bootanimation/part0/audio.wav
+fi
+
+if [ "$audioSource" = "2" ]; then
+  read -p "Enter your audio file name: " audio
+  isWav=$(ls | grep ".wav")
+
+  if [ "$audio" = "$isWav" ]; then
+    cp $audio .bootanimation/part0
+  else
+    ffmpeg -i $audio audio.wav
+    cp audio.wav .bootanimation/part0
+  fi
+fi
 
 splitVideo() { # split video into its frames 
   printf "Choose file format (1 or 2): \n"
