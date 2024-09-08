@@ -25,13 +25,17 @@ if [ "$audioSource" = "1" ]; then
 fi
 
 if [ "$audioSource" = "2" ]; then
-  read -p "Enter your audio file name: " audio
+  echo "Selecting audio file" >> log.txt
+  read -p "Enter your audio file name: " audio >> log.txt 2>&1
   isWav=$(ls | grep ".wav")
 
   if [ "$audio" = "$isWav" ]; then
+    echo "Selected audio format is .wav, no need to convert" >> log.txt
     cp $audio .bootanimation/part0
   else
-    ffmpeg -i $audio audio.wav
+    echo "Selected audio format isn't .wav, converting the file" >> log.txt
+    echo "########################"
+    ffmpeg -i $audio audio.wav >> log.txt 2>&1
     cp audio.wav .bootanimation/part0
   fi
 fi
