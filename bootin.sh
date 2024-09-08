@@ -21,21 +21,25 @@ if [ "$includeAudio" = "y" ]; then
 fi
 
 if [ "$audioSource" = "1" ]; then
-  ffmpeg -i $video -vn -acodec copy .bootanimation/part0/audio.wav
+  echo "Audio file is being extracted from media." >> log.txt
+  if [[ "$video" =~ \.webm ]]; then
+    ffmpeg -i $video -vn -acodec s16le -ar 44100 .bootanimation/part0/audio.wav >> log.txt 2>&1
+  else
+    ffmpeg -i $video -vn -acodec s16le -ar 44100 .bootanimation/part0/audio.wav >> log.txt 2>&1
+  fi
 fi
 
 if [ "$audioSource" = "2" ]; then
   echo "Selecting audio file" >> log.txt
   read -p "Enter your audio file name: " audio >> log.txt 2>&1
-  isWav=$(ls | grep ".wav")
 
-  if [ "$audio" = "$isWav" ]; then
+  if [ "$audio" =~ \.wav ]; then
     echo "Selected audio format is .wav, no need to convert" >> log.txt
     cp $audio .bootanimation/part0
   else
     echo "Selected audio format isn't .wav, converting the file" >> log.txt
     echo "########################"
-    ffmpeg -i $audio audio.wav >> log.txt 2>&1
+    ffmpeg -i $audio -vn -acodec s16le -ar 44100 audio.wav >> log.txt 2>&1
     cp audio.wav .bootanimation/part0
   fi
 fi
@@ -210,11 +214,11 @@ createDescription() {
 
   readType
 
-  if [ "$backgroundColor" = "black" ]; then
+  if [ "$backgroundColor" = "b" ]; then
     echo "$type $repeat 0 part0 #000000" >> .bootanimation/desc.txt
   fi
 
-  if [ "$backgroundColor" = "white" ]; then
+  if [ "$backgroundColor" = "w" ]; then
     echo "$type $repeat 0 part0 #FFFFFF" >> .bootanimation/desc.txt
   fi
 
