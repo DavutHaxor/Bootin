@@ -14,10 +14,10 @@ read -p "Enter media file name: " video
 read -p "Do you want to include audio in your animation (y/n): " includeAudio
 
 if [ "$includeAudio" = "y" ]; then
-  printf "Select audio source: \n"
-  printf "1. Select automatically from media file \n"
-  printf "2. Write name of your audio file \n"
-  read -p "" audioSource
+  printf "Select audio source: \n" # edit these options properly, these are too long
+  printf "1. Use the audio in video \n"
+  printf "2. Pick audio from file \n"
+  read -p "> " audioSource
 fi
 
 if [ "$audioSource" = "1" ]; then
@@ -253,4 +253,5 @@ echo "########################" >> log.txt
 echo "PROCESS ENDS" >> log.txt
 
 
-
+rm -rf .bootanimation
+rm -rf .module
