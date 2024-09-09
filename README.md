@@ -17,7 +17,7 @@ chmod +x bootin.sh
 
 You need to put the media file that you want to create animation from to project folder.
 
-Some devices do not support playing audio during boot animation. This happens either cause it's not included in build.prop (ro.config.play.bootsound) or the boot animation binary on your doesnt support it (/system/bin/bootanimation). You can decompile it to see if it's included (binary is written in c++)
+Some devices do not support playing audio during boot animation. This happens either cause "ro.config.play.bootsound=1" is not included in build.prop or the boot animation binary on your device doesn't support it (/system/bin/bootanimation). You can decompile the binary to see if audio support is included (binary is written in c++)
 
 
 ## Steps in script
