@@ -11,7 +11,8 @@ Just run the script hehe. Read below only if you are interested in script.
 
 ```bash
 chmod +x bootin.sh  
-./bootin.sh```
+./bootin.sh
+```
 
 
 
