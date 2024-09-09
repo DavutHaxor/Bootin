@@ -9,8 +9,9 @@ Bootin is a tool to prepare Magisk modules that contains Android boot animations
 Just run the script hehe. Read below only if you are interested in script.
 
 
-```chmod +x bootin.sh```
-```./bootin.sh```
+```bash
+chmod +x bootin.sh  
+./bootin.sh```
 
 
 
