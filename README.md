@@ -6,7 +6,7 @@ Bootin is a tool to prepare Magisk modules that contains Android boot animations
 # Usage
 
 
-Just run the script hehe (make sure you have `ffmpeg` installed beforehand!). Read below only if you are interested in script.
+Just run the script hehe (make sure you have `ffmpeg` and `zip` installed beforehand!). Read below only if you are interested in script.
 
 
 ```bash
