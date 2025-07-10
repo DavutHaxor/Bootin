@@ -30,7 +30,7 @@ Some devices do not support playing audio during boot animation. This happens ei
 6. Program will inform you of media file duration and will ask you how many times to play it. Note that boot process usually takes less than 10 seconds after beginning of boot animation.
 7. What you want as background color. Only options currently are black and white.
 8. Animation type. This is really important since it will decide if animation will pause immediately after boot process is complete, or will continue to play and finish as many times as you specified.
-9. Name your animation using unix file name type. (Example: If you write "Shiggy", the module will be created in name of Shiggy-Bootanimation.zip) Dont try fancy names, use simple names.
+9. Name your animation using unix file name type and UTF-8. (Example: If you write "Shiggy", the module will be created in name of Shiggy-Bootanimation.zip) Dont try fancy names, use simple names.
 
 After your module is created you can flash it from Magisk Manager app. Needs at least Magisk v20.4.
 
